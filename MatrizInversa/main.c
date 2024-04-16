@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../../_Librerias/fracciones.h"
+#include "../_Librerias/fracciones.h"
 
 void darDimensiones(int*, int*);
 Frac** crearMatriz(int, int);
