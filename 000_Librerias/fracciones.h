@@ -2,7 +2,8 @@
 #define FRACCIONES_H
 
 #include <stdio.h>
-#include "numeros.h"
+#include <stdlib.h>
+#include "enteros.h"
 
 typedef struct {
     Entero e;
@@ -98,7 +99,7 @@ Frac reduceFrac(Frac a) {
     Frac t = imp_a_Mix(a);
     if (t.d == 0) {
         printf("Error: Denominador cero.\n");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     Entero m = MCD(t.n, t.d);
 
@@ -157,10 +158,10 @@ Frac div_Fracs(Frac a, Frac b) {
     Frac t;
     a = mix_a_Imp(a);
     b = mix_a_Imp(b);
-
-    if (b.n == 0) {
+    
+    if ((b.n == 0)) {
         printf("Error: División por cero.\n");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     t.e = 0;

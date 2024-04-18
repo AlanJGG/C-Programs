@@ -1,5 +1,5 @@
-#ifndef NUMEROS_H
-#define NUMEROS_H
+#ifndef ENTEROS_H
+#define ENTEROS_H
 
 typedef int Entero;
 
