@@ -9,7 +9,7 @@ void llenarMatrizIdentidad(Frac**, int);
 void impMats(Frac**, Frac**, int, int);
 void copiarMatriz(Frac**, Frac**, int);
 void gaussJordan(Frac**, Frac**, int);
-void liberarMemoria(Frac**, Frac**, int);
+void liberarMemoria(Frac**, int);
 
 int main(){
 
@@ -35,8 +35,8 @@ int main(){
     printf("\n-------------------------------------\n\tMatriz Inversa\n");
     impMats(matriz, matrizInversa, fil, col);
 
-    liberarMemoria(matriz, matrizInversa, fil);
-    return 0;
+    liberarMemoria(matriz, fil);
+    liberarMemoria(matrizInversa, fil);
 }
 
 void darDimensiones(int* fil, int* col){
@@ -137,6 +137,7 @@ void gaussJordan(Frac** matriz, Frac** matrizInversa, int dim){
             impFrac(aux);
             exit(EXIT_FAILURE);
         }
+        
         for(int j = 0; j < dim; j++){
             matriz[i][j] = div_Fracs(matriz[i][j], aux);
             matrizInversa[i][j] = div_Fracs(matrizInversa[i][j], aux);
@@ -168,14 +169,12 @@ void gaussJordan(Frac** matriz, Frac** matrizInversa, int dim){
     }
 }
 
-void liberarMemoria(Frac** mat, Frac** mat2, int dim){
+void liberarMemoria(Frac** mat, int dim){
     for(int i=0;i<dim;i++){
         free(mat[i]);
-        free(mat2[i]);
     }
 
     free(mat);
-    free(mat2);
 
     printf("\n--Memoria liberada--\n");
 }

@@ -76,22 +76,21 @@ Frac leeFrac() {
 Frac mix_a_Imp(Frac a) {
     Frac t;
     t.e = 0;
-    t.n = !EsNegativo(a.e) ? a.e * a.d + a.n : a.e * a.d - a.n;
-    if (EsNegativo(a.e) || EsNegativo(a.n))
-        t.n = -t.n;
-    a.e = t.e;
-    a.n = t.n;
+    if(EsNegativo(a.e) && !EsNegativo(a.n))
+        t.n = cambiarSigno((Abs(a.e) * Abs(a.d)) + Abs(a.n));
+    else
+        t.n =  (a.e * a.d) + a.n;
+    t.d = Abs(a.d);
 
-    return a;
+    return t;
 }
 
 Frac imp_a_Mix(Frac a) {
-    Frac t = a;
+    Frac t;
     t.e = a.e + (a.n / a.d);
-    t.n = (a.n % a.d);
-    if(a.n < 0)
-        t.e = -t.e;
-
+    t.n = Abs((a.n % a.d));
+    t.d = Abs(a.d);
+    
     return t;
 }
 
