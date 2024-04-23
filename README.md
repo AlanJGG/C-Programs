@@ -1,1 +1,1 @@
-This is a repository where C programs coded in spanish can be found.
+This is a repository where C programs can be found.
